@@ -7,7 +7,7 @@ class Track {
  } */
 }
 
-class Web extends Track {
+class Web {
   constructor() {
     this.name = "Web Dev";
     this.projects = 10;
@@ -102,37 +102,41 @@ class UmuziStudents {
       {
         name: "Harvey",
         track: "java",
-        cohort: 30,
+        cohort: 27,
       },
       {
         name: "Messy",
         track: "web",
-        cohort: 31,
+        cohort: 27,
       },
     ];
     this.totalRecruits;
   }
 
   getStudentsTrack(student) {
-    //To-Do
+    student.track === "web" ? new Web().info() : new Java().info();
   }
 
-  filterStudents(track, cohort) {
+  filterStudents(cohort) {
+    //27 (31 < 'Alumni')
     let students = [];
-    students.filter((s) => s.name == track);
+    students = this.students
+      .filter((s) => s.cohort === cohort)
+      .map((s) =>
+        s.cohort < 31 ? ([...s["isAlumni"]] = "Yes") : (s["isAlumni"] = "No")
+      ); 
     return students;
   }
 }
 
-/* Problem Statement
- Filter the students 
- return Alumni if the cohort is 31 or <
- return '
-*/
-
-const umuzi = new UmuziStudents();
-umuzi.filterStudents("Web", 27);
-
+const students = new UmuziStudents();
+/* students.getStudentsTrack({
+  name: "Jake",
+  track: "java",
+  cohort: 27,
+}); */
+const webList = students.filterStudents(35);
+console.table(webList)
 
 //Take Homes:
 /*

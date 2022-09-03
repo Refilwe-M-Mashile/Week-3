@@ -48,22 +48,15 @@ else:
 // str = 'abc' -> wxy
 const cipher = (str) => {
   let res = "";
-  /* for (const c of str) {
+  for (const c of str) {
     res +=
       c.toUpperCase() !== c || c === " "
         ? library[c]
         : /[\W_]/.test(c)
         ? c
         : "^" + library[c.toLowerCase()];
-  } */
-  for (let char of str) {
-    res += /a-zA-Z\s/.test(char)
-      ? /A-Z/.test(char)
-      : "^" + library[char.toLowerCase()]
-      ? library[char]
-      : char;
   }
-  console.log(res);
+  //console.log(res);
   return res;
 };
 //console.log(cipher('abc'))
@@ -79,4 +72,4 @@ const decipher = (codedStr) => {
   const result = "";
   //
   //console.log(result);
-};
+}; 
