@@ -118,28 +118,21 @@ class UmuziStudents {
   }
 
   filterStudents(cohort) {
-    //27 (31 < 'Alumni')
     let students = [];
     students = this.students
-      .filter((s) => s.cohort === cohort).map(s=>s.cohort<31?{...s,'isAlumni':'Yes'}:{...s,'isAlumni':'No'})
-       
+      .filter((s) => s.cohort === cohort)
+      .map((s) =>
+        s.cohort < 31 ? { ...s, isAlumni: "Yes" } : { ...s, isAlumni: "No" }
+      );
     return students;
   }
 }
 
 const students = new UmuziStudents();
-/* students.getStudentsTrack({
+students.getStudentsTrack({
   name: "Jake",
   track: "java",
   cohort: 27,
-}); */
+});
 const webList = students.filterStudents(35);
-console.table(webList)
-
-//Take Homes:
-/*
-isFunctions
-OOP
-Math Functions
-Ascii Table
- */
+console.table(webList);
