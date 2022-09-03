@@ -121,10 +121,8 @@ class UmuziStudents {
     //27 (31 < 'Alumni')
     let students = [];
     students = this.students
-      .filter((s) => s.cohort === cohort)
-      .map((s) =>
-        s.cohort < 31 ? ([...s["isAlumni"]] = "Yes") : (s["isAlumni"] = "No")
-      ); 
+      .filter((s) => s.cohort === cohort).map(s=>s.cohort<31?{...s,'isAlumni':'Yes'}:{...s,'isAlumni':'No'})
+       
     return students;
   }
 }
